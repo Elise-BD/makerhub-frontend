@@ -1,0 +1,10 @@
+<div class="form">
+  <form [formGroup]="loginForm" (ngSubmit)="connection()">
+    <label for="username">Identifiant</label><br>
+    <input type="text" formControlName="username" id="username"><br>
+
+    <label for="password">Mot de passe</label><br>
+    <input type="password" formControlName="password" id="password"><br>
+    <button type="submit">Se connecter</button>
+  </form>
+</div>

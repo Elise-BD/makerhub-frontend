@@ -1,0 +1,10 @@
+<nav>
+  <ul>
+    <li><a routerLink="/home">HOME</a></li>
+    <li><a routerLink="/group">GROUPES</a></li>
+    <li *ngIf="(activeUser | async) == 'admin' "><a routerLink="/user">UTILISATEURS</a></li>
+    <li *ngIf="(activeUser | async) == 'joueur' "><a routerLink="/user">MON PROFIL</a></li>
+    <li><a routerLink="/login" *ngIf="!(activeUser | async)" >CONNEXION</a>
+      <a routerLink="/login" *ngIf="(activeUser | async)" (click)="disconnect()">DECONNEXION</a></li>
+  </ul>
+</nav>
