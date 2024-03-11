@@ -1,30 +1,123 @@
-<p>profile works!</p>
 
 <div *ngIf="activeUser != null">
 
-  <h3>MON PROFIL PIP</h3>
-  <ul>
-    <li>ID : {{activeUser.id}}</li>
-    <li>PSEUDO : {{activeUser.username}}</li>
-    <li>PRÉNOM : {{activeUser.firstname}}</li>
-    <li>NOM : {{activeUser.lastname}}</li>
-    <li>PERSONNALITÉ : {{activeUser.personality}}</li>
-    <li>INTÉRÊTS PORFESSIONNELS : {{activeUser.riasec[0]}}, {{activeUser.riasec[1]}}, {{activeUser.riasec[2]}}</li>
-  </ul>
+  <h2>MON PROFIL PIP</h2>
 
-  <div class="personalities_link">
-    <h4>Test des 16 personnalités : instructions</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  <div>
+    <h3>Mes données personnelles</h3>
+    <ul>
+      <li>ID : {{activeUser.id}}</li>
+      <li>PSEUDO : {{activeUser.username}}</li>
+      <li>PRÉNOM : {{activeUser.firstname}}</li>
+      <li>NOM : {{activeUser.lastname}}</li>
+    </ul>
+    <button>Modifier</button>
+  </div>
+  <br><br>
+  <div>
+    <h3>Test des 16 personnalités</h3>
+    <div *ngIf="activeUser.personality != null">
+      <p>MA PERSONNALITÉ : {{activeUser.personality}}</p>
+      <button>Modifier</button>
+    </div>
+
+
+    <div class="personalities_link" *ngIf="activeUser.personality == null">
+      <h4>Infos et instructions</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <br>
+      <a href="https://www.16personalities.com/fr">  Accéder au test des 16 personnalités</a>
+      <br><br>
+
+      <form [formGroup]="personalityForm">
+        <label for="personality_form">Mon résultat = </label>
+        <select formControlName="personality" id="personality_form">
+          <option ngValue="INTJ">{{PersonalityResult.INTJ}}</option>
+          <option ngValue="INTP">{{PersonalityResult.INTP}}</option>
+          <option ngValue="ENTJ">{{PersonalityResult.ENTJ}}</option>
+          <option ngValue="ENTP">{{PersonalityResult.ENTP}}</option>
+          <option ngValue="INFJ">{{PersonalityResult.INFJ}}</option>
+          <option ngValue="INFP">{{PersonalityResult.INFP}}</option>
+          <option ngValue="ENFJ">{{PersonalityResult.ENFJ}}</option>
+          <option ngValue="ENFP">{{PersonalityResult.ENFP}}</option>
+          <option ngValue="ISTJ">{{PersonalityResult.ISTJ}}</option>
+          <option ngValue="ISFJ">{{PersonalityResult.ISFJ}}</option>
+          <option ngValue="ESTJ">{{PersonalityResult.ESTJ}}</option>
+          <option ngValue="ESFJ">{{PersonalityResult.ESFJ}}</option>
+          <option ngValue="ISTP">{{PersonalityResult.ISTP}}</option>
+          <option ngValue="ISFP">{{PersonalityResult.ISFP}}</option>
+          <option ngValue="ESTP">{{PersonalityResult.ESTP}}</option>
+          <option ngValue="ESFP">{{PersonalityResult.ESFP}}</option>
+        </select>
+        <button type="submit" [disabled]="personalityForm.invalid">Valider</button>
+      </form>
+
+    </div>
+  </div>
+  <br>
+  <div>
+    <h3>Test RIASEC : intérêts professionnels</h3>
+    <div *ngIf="activeUser.riasec != null">
+      <p>MES INTÉRÊTS PORFESSIONNELS : {{activeUser.riasec[0]}}, {{activeUser.riasec[1]}}, {{activeUser.riasec[2]}}</p>
+      <button>Modifier</button>
+    </div>
+
+
+    <div class="riasec_link" *ngIf="activeUser.riasec == null">
+
+      <h4>Les origines du test</h4>
+      <p>Le profil RIASEC est un modèle théorique élaboré par le psychologue et chercheur américain John Holland dans les années 70.
+
+        L'acronyme résume les 6 types de personnalité définis par Holland. Le type Réaliste aime gérer les choses tangibles et aiment en général bricoler. Le type Investigateur préfère se poser des questions et aborder les choses selon une problématique. Le type Artistique adore créer et s'exprimer aux travers de médium. Le type Social aime gérer les gens, il est communicatif. Enfin le type Entreprenant n'aime pas se poser des questions il aime agir.
+
+        Selon Holland le choix d'une profession, d'un métier, est une forme d'expression de la personnalité. L'appartenance d'un individu à l'un ou l'autre des six types est déterminée par ses habiletés, ses intérêts et certains traits de sa personnalité. Chaque profession implique un ensemble d'aptitudes et de postures correspondants à chacun des profils dans des mesures différentes. Holland a ainsi pu dresser une carte du monde professionnel qui permet à chacun de découvrir pour quels métiers il est fait.</p>
+
+      <h4>La théorie vocationnelle des métiers</h4>
+      <p>Selon HOLLAND, les personnes d’un même « type » exercent souvent le même genre de travail, parce qu’ils s’apparentent par leur personnalité, parce qu’ils poursuivent des objectifs semblables, parce qu’ils présentent les mêmes dispositions physiques et psychologiques à l’égard de leur travail. La typologie d’une personne est établie en mesurant son degré d’affinité avec chacun des 6 types de manière à la classer par ordre d’importance, du type le plus marqué au type le moins marqué. Chez la plupart des gens, ce sont surtout les deux ou trois premiers types de leur hiérarchie personnelle qui ont une influence significative sur leur manière d’être et d’agir, tant dans leur vie personnelle que professionnelle.
+
+        Ce modèle est donc d'un intérêt particulier, car à défaut d'autres modèles existants il ne définit pas exactement la personnalité, mais plutôt la vocation. Il vise à déterminer quelles sont les intérêts professionnels de l'individu et augmente la congruence de certains métiers avec le profil auquel il correspond.
+
+        En résumé, il permet simplement et efficacement de trouver le métier dans lequel l'individu va être extrêmement motivé et épanoui. Aujourd'hui cette typologie est devenue une référence mondiale dans le milieu de l'orientation professionnelle.</p>
+      <br>
+      <a href="https://test-orientation.studyrama.com/test/interets-professionnels">  Accéder au test des intérêts professionnels</a>
+      <br><br>
+      <form [formGroup]="riasecForm">
+        <label for="riasec_form1">Mon résultat 1 (dominant) = </label>
+        <select formControlName="riasec1" id="riasec_form1">
+          <option ngValue="R">{{RiasecResult.REALISTE}}</option>
+          <option ngValue="I">{{RiasecResult.INVESTIGATEUR}}</option>
+          <option ngValue="A">{{RiasecResult.ARTISTE}}</option>
+          <option ngValue="S">{{RiasecResult.SOCIAL}}</option>
+          <option ngValue="E">{{RiasecResult.ENTREPRENANT}}</option>
+          <option ngValue="C">{{RiasecResult.CONVENTIONNEL}}</option>
+        </select>
+        <br>
+        <label for="riasec_form2">Mon résultat 2 = </label>
+        <select formControlName="riasec2" id="riasec_form2">
+          <option ngValue="R">{{RiasecResult.REALISTE}}</option>
+          <option ngValue="I">{{RiasecResult.INVESTIGATEUR}}</option>
+          <option ngValue="A">{{RiasecResult.ARTISTE}}</option>
+          <option ngValue="S">{{RiasecResult.SOCIAL}}</option>
+          <option ngValue="E">{{RiasecResult.ENTREPRENANT}}</option>
+          <option ngValue="C">{{RiasecResult.CONVENTIONNEL}}</option>
+        </select>
+        <br>
+        <label for="riasec_form3">Mon résultat 3 = </label>
+        <select formControlName="riasec3" id="riasec_form3">
+          <option ngValue="R">{{RiasecResult.REALISTE}}</option>
+          <option ngValue="I">{{RiasecResult.INVESTIGATEUR}}</option>
+          <option ngValue="A">{{RiasecResult.ARTISTE}}</option>
+          <option ngValue="S">{{RiasecResult.SOCIAL}}</option>
+          <option ngValue="E">{{RiasecResult.ENTREPRENANT}}</option>
+          <option ngValue="C">{{RiasecResult.CONVENTIONNEL}}</option>
+        </select>
+
+        <button type="submit" [disabled]="riasecForm.invalid">Valider</button>
+      </form>
+
+    </div>
     <br>
-    <a>lien vers le test</a>
   </div>
 
-  <div class="riasec_link">
-    <h4>Test RIASEC : instructions</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    <br>
-    <a>lien vers le test</a>
-  </div>
-
-
+  <br>
 </div>

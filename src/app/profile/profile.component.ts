@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Role} from "../login/Auth";
-import {User} from "../user/User";
-import {Observable, Subject, takeUntil} from "rxjs";
+import {PERSONALITY_FORM, personalityForm, PersonalityResult, RIASEC_FORM, RiasecResult, User} from "../user/User";
+import {Subject, takeUntil} from "rxjs";
 import {UserService} from "../user/user.service";
 import {LoginService} from "../login/login.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-profile',
@@ -15,9 +16,15 @@ export class ProfileComponent {
   pseudo: string = "";
   activeUser: User | null = null;
   $destroyed = new Subject<boolean>();
+  personalityForm: FormGroup;
+  riasecForm: FormGroup
 
   constructor(private readonly _userService: UserService,
-              private readonly _loginService: LoginService){}
+              private readonly _loginService: LoginService,
+              private readonly _formBuilder: FormBuilder){
+    this.personalityForm = this._formBuilder.group(PERSONALITY_FORM);
+    this.riasecForm = this._formBuilder.group(RIASEC_FORM);
+  }
 
   ngOnInit() {
 
@@ -43,5 +50,9 @@ export class ProfileComponent {
     this.$destroyed.complete();
   }
 
-    protected readonly Role = Role;
+
+  protected readonly Role = Role;
+  public PersonalityResult = PersonalityResult;
+  protected readonly User = User;
+  protected readonly RiasecResult = RiasecResult;
 }

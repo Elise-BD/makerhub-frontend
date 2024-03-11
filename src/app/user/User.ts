@@ -1,3 +1,5 @@
+import {Validators} from "@angular/forms";
+
 export class User{
   id: number;
   username: string;
@@ -18,32 +20,32 @@ export class User{
 }
 
 export enum PersonalityResult{
-  INTJ,
-  INTP,
-  ENTJ,
-  ENTP,
-  INFJ,
-  INFP,
-  ENFJ,
-  ENFP,
-  ISTJ,
-  ISFJ,
-  ESTJ,
-  ESFJ,
-  ISTP,
-  ISFP,
-  ESTP,
-  ESFP
+  INTJ ="INTJ",
+  INTP ="INTP",
+  ENTJ ="ENTJ",
+  ENTP ="ENTP",
+  INFJ ="INFJ",
+  INFP ="INFP",
+  ENFJ ="ENFJ",
+  ENFP ="ENFP",
+  ISTJ ="ISTJ",
+  ISFJ ="ISFJ",
+  ESTJ ="ESTJ",
+  ESFJ ="ESFJ",
+  ISTP ="ISTP",
+  ISFP ="ISFP",
+  ESTP ="ESTP",
+  ESFP ="ESFP"
 
 }
 
 export enum RiasecResult{
-  R,
-  I,
-  A,
-  S,
-  E,
-  C
+  REALISTE ="R",
+  INVESTIGATEUR ="I",
+  ARTISTE ="A",
+  SOCIAL ="S",
+  ENTREPRENANT ="E",
+  CONVENTIONNEL ="C"
 }
 
 
@@ -51,6 +53,23 @@ export interface registerForm{}
 
 export interface userForm{}
 
+export interface personalityForm{
+  personality: PersonalityResult;
+}
 
+export const PERSONALITY_FORM ={
+  personality:[undefined,[Validators.required]]
+}
 
+export interface riasecForm{
+  riasec1: RiasecResult;
+  riasec2: RiasecResult;
+  riasec3: RiasecResult;
+}
+
+export const RIASEC_FORM ={
+  riasec1: [undefined,[Validators.required]],
+  riasec2: [undefined,[Validators.required]],
+  riasec3: [undefined,[Validators.required]]
+}
 
