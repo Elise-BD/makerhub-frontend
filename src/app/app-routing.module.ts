@@ -5,6 +5,7 @@ import {LoginComponent} from "./login/login.component";
 import {UserComponent} from "./user/user.component";
 import {Page404Component} from "./Common/page404/page404.component";
 import {GroupComponent} from "./group/group.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'group', component: GroupComponent},
   {path: 'user', component: UserComponent},
+  {path: 'profile', component: ProfileComponent},
   {path: '404', component: Page404Component},
   {path: '**', redirectTo: '404'}
 ];

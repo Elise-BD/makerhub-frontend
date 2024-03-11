@@ -5,9 +5,9 @@ export class Auth{
   roles: Role[];
   username: string;
 
-  constructor(token: string, role: Role[], username: string) {
+  constructor(token: string, roles: Role[], username: string) {
     this.token = token;
-    this.roles = role;
+    this.roles = roles;
     this.username = username;
   }
 }

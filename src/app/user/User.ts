@@ -1,19 +1,19 @@
 export class User{
-  _id: number;
-  _username: string;
-  _firstname: string;
-  _lastname: string;
-  _personality: PersonalityResult;
-  _riasec: RiasecResult[];
+  id: number;
+  username: string;
+  firstname: string;
+  lastname: string;
+  personality: PersonalityResult;
+  riasec: RiasecResult[];
 
 
   constructor(id: number, username: string, firstname: string, lastname: string, personality: PersonalityResult, riasec: RiasecResult[]) {
-    this._id = id;
-    this._username = username;
-    this._firstname = firstname;
-    this._lastname = lastname;
-    this._personality = personality;
-    this._riasec = riasec;
+    this.id = id;
+    this.username = username;
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.personality = personality;
+    this.riasec = riasec;
   }
 }
 

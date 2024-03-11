@@ -1,1 +1,20 @@
 <p>user works!</p>
+
+<div *ngIf="activeUserRole == Role.ADMIN ">
+  <h3>LISTE DES UTILISATEURS</h3>
+
+  <table id="liste_users">
+    <thead>
+      <th>ID</th>
+      <th>PSEUDO</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usersList">
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+      </tr>
+    </tbody>
+
+    <tfoot></tfoot>
+  </table>
+</div>

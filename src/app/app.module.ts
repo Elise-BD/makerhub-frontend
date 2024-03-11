@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { GroupComponent } from './group/group.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     UserComponent,
     GroupComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule
   ],
   providers: [
-    {provide: 'apiUrl', useValue: "http://localhost:8080/api"}
+    {provide: 'apiUrl', useValue: "http://localhost:8080/api"},
+    {provide: HTTP_INTERCEPTORS, useClass: authenticationInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

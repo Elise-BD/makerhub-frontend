@@ -1,0 +1,30 @@
+<p>profile works!</p>
+
+<div *ngIf="activeUser != null">
+
+  <h3>MON PROFIL PIP</h3>
+  <ul>
+    <li>ID : {{activeUser.id}}</li>
+    <li>PSEUDO : {{activeUser.username}}</li>
+    <li>PRÉNOM : {{activeUser.firstname}}</li>
+    <li>NOM : {{activeUser.lastname}}</li>
+    <li>PERSONNALITÉ : {{activeUser.personality}}</li>
+    <li>INTÉRÊTS PORFESSIONNELS : {{activeUser.riasec[0]}}, {{activeUser.riasec[1]}}, {{activeUser.riasec[2]}}</li>
+  </ul>
+
+  <div class="personalities_link">
+    <h4>Test des 16 personnalités : instructions</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <br>
+    <a>lien vers le test</a>
+  </div>
+
+  <div class="riasec_link">
+    <h4>Test RIASEC : instructions</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <br>
+    <a>lien vers le test</a>
+  </div>
+
+
+</div>
