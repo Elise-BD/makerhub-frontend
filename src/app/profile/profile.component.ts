@@ -1,6 +1,14 @@
 import {Component} from '@angular/core';
 import {Role} from "../login/Auth";
-import {PERSONALITY_FORM, personalityForm, PersonalityResult, RIASEC_FORM, RiasecResult, User} from "../user/User";
+import {
+  PERSONALITY_FORM,
+  personalityForm,
+  PersonalityResult,
+  RIASEC_FORM,
+  riasecForm,
+  RiasecResult,
+  User, userForm
+} from "../user/User";
 import {Subject, takeUntil} from "rxjs";
 import {UserService} from "../user/user.service";
 import {LoginService} from "../login/login.service";
@@ -43,6 +51,45 @@ export class ProfileComponent {
       }
     )
 
+  }
+
+  updatePersonality(){
+    if(this.personalityForm.valid) {
+      this._userService.updatePersonality(this.activeUser!.id, this.personalityForm.value).subscribe({
+        next: value => {alert("Personalité mise à jour.");
+          this.personalityForm.reset();
+          this.ngOnInit()},
+        error: err => {
+          if(err.status === 403){
+            alert("Problème d'authentification.")
+          } else if(err.error.status === 400){
+            alert("Problème de complétion du formulaire.")
+          } else {
+            alert("Autre erreur non identifiée...")
+          }
+        }
+        }
+      )
+    }
+  }
+
+  updateRiasec(){
+    if(this.riasecForm.valid) {
+      this._userService.updateRiasec(this.activeUser!.id, this.riasecForm.value).subscribe({
+        next: value => {alert("Personalité mise à jour.");
+          this.personalityForm.reset();
+          this.ngOnInit()},
+        error: err => {
+          if(err.status === 403){
+            alert("Problème d'authentification.")
+          } else if(err.error.status === 400){
+            alert("Problème de complétion du formulaire.")
+          } else {
+            alert("Autre erreur non identifiée...")
+          }
+        }}
+      )
+    }
   }
 
   ngOnDestroy() {
