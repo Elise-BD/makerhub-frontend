@@ -1,4 +1,3 @@
-<p>user works!</p>
 
 <div *ngIf="activeUserRole == Role.ADMIN ">
   <h3>LISTE DES UTILISATEURS</h3>
@@ -19,10 +18,15 @@
         <td>{{user.lastname}}</td>
         <td><button>Voir</button></td>
         <td><button>Modifier</button></td>
-        <td><button>Supprimer</button></td>
+        <td><button *ngIf="!deleteConfirmation && user.id != 1" (click)="askDeleteConfirmation(user.id)">Supprimer</button>
+          <button *ngIf="deleteConfirmation  && user.id == idUserToDelete" (click)="delete(user.id)">Confirmer suppression</button>
+          <button *ngIf="deleteConfirmation  && user.id == idUserToDelete" (click)="cancelDelete(user.id)">Annuler suppression</button></td>
       </tr>
     </tbody>
 
     <tfoot></tfoot>
   </table>
+
+
 </div>
+

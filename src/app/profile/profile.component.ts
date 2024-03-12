@@ -67,8 +67,7 @@ export class ProfileComponent {
           } else {
             alert("Autre erreur non identifiée...")
           }
-        }
-        }
+        }}
       )
     }
   }
@@ -77,7 +76,7 @@ export class ProfileComponent {
     if(this.riasecForm.valid) {
       this._userService.updateRiasec(this.activeUser!.id, this.riasecForm.value).subscribe({
         next: value => {alert("Personalité mise à jour.");
-          this.personalityForm.reset();
+          this.riasecForm.reset();
           this.ngOnInit()},
         error: err => {
           if(err.status === 403){

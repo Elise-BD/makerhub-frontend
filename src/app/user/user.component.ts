@@ -16,6 +16,8 @@ export class UserComponent implements OnInit, OnDestroy{
   $destroyed = new Subject<boolean>();
   activeUserRole: Role = Role.UTILISATEUR;
   usersList: User[] = [];
+  deleteConfirmation: boolean = false;
+  idUserToDelete: number|null = null;
 
   constructor(private readonly _userService: UserService,
               private readonly _loginService: LoginService,
@@ -46,6 +48,26 @@ export class UserComponent implements OnInit, OnDestroy{
     )
   }
 
+  askDeleteConfirmation(id: number){
+    this.deleteConfirmation = true;
+    this.idUserToDelete = id;
+  }
+
+  cancelDelete(id: number){
+    this.deleteConfirmation = false;
+    this.idUserToDelete = null;
+  }
+
+  delete(id: number){
+    this._userService.delete(id).subscribe(
+      {next: ()=> {
+        alert("Utilisateur ID "+id +" supprimé.")
+        this.deleteConfirmation = false;
+        this.ngOnInit();
+        },
+      error: (err) => console.log(err.error)}
+    )
+  }
 
   ngOnDestroy() {
     this.$destroyed.next(true);
