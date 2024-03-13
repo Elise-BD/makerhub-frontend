@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {personalityForm, registerForm, riasecForm, User, userForm} from "./User";
+import {personalityForm, registerForm, riasecForm, User, userFormAdmin, userFormProfile} from "./User";
 import {Router} from "@angular/router";
 import {tap} from "rxjs";
 
@@ -28,15 +28,19 @@ export class UserService {
   }
 
   register(form: registerForm){
-    return this._httpClient.post(this._apiUrl + "/user/register", form).pipe(
+    return this._httpClient.post(this._apiUrl + "/register", form).pipe(
       tap(value => {
         this._router.navigate(['./login'])
       })
     );
   }
 
-  updateUserDetails(id: number, form: userForm){
+  updateUserAdmin(id: number, form: userFormAdmin){
     return this._httpClient.put(this._apiUrl + "/user/" + id, form)
+  }
+
+  updateUserProfile(id: number, form: userFormProfile){
+    return this._httpClient.put(this._apiUrl + "/profile/" + id, form)
   }
 
   updatePersonality(id: number, form: personalityForm){

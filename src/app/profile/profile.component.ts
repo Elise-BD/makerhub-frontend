@@ -7,7 +7,7 @@ import {
   RIASEC_FORM,
   riasecForm,
   RiasecResult,
-  User, userForm
+  User
 } from "../user/User";
 import {Subject, takeUntil} from "rxjs";
 import {UserService} from "../user/user.service";
@@ -26,6 +26,9 @@ export class ProfileComponent {
   $destroyed = new Subject<boolean>();
   personalityForm: FormGroup;
   riasecForm: FormGroup
+  showPersonalityForm: boolean = true;
+  showRiasecForm: boolean = true;
+
 
   constructor(private readonly _userService: UserService,
               private readonly _loginService: LoginService,
@@ -69,6 +72,7 @@ export class ProfileComponent {
           }
         }}
       )
+      this.showPersonalityForm = false;
     }
   }
 
@@ -88,7 +92,16 @@ export class ProfileComponent {
           }
         }}
       )
+      this.showRiasecForm = false;
     }
+  }
+
+  showUpdatePersonality(){
+    this.showPersonalityForm = true;
+  }
+
+  showUpdateRiasec(){
+    this.showRiasecForm = true;
   }
 
   ngOnDestroy() {

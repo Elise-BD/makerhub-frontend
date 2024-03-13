@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject, takeUntil} from "rxjs";
 import {UserService} from "./user.service";
 import {LoginService} from "../login/login.service";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {Auth, Role} from "../login/Auth";
 import {User} from "./User";
 
@@ -18,6 +18,7 @@ export class UserComponent implements OnInit, OnDestroy{
   usersList: User[] = [];
   deleteConfirmation: boolean = false;
   idUserToDelete: number|null = null;
+  userForm!: FormGroup;
 
   constructor(private readonly _userService: UserService,
               private readonly _loginService: LoginService,
@@ -47,6 +48,11 @@ export class UserComponent implements OnInit, OnDestroy{
       }
     )
   }
+
+  update(id: number){
+    this._userService.updateUserAdmin(id, this.userForm.value).subscribe()
+  }
+
 
   askDeleteConfirmation(id: number){
     this.deleteConfirmation = true;

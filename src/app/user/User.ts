@@ -1,4 +1,5 @@
 import {Validators} from "@angular/forms";
+import {Role} from "../login/Auth";
 
 export class User{
   id: number;
@@ -63,7 +64,24 @@ export const REGISTER_FORM ={
   lastname: ['', [Validators.required, Validators.minLength(2)]],
 }
 
-export interface userForm{}
+export interface userFormAdmin{
+  username: string;
+  password: string;
+  firstname: string;
+  lastname: string;
+  role: Role;
+  personality: PersonalityResult;
+  riasec1: RiasecResult;
+  riasec2: RiasecResult;
+  riasec3: RiasecResult;
+}
+
+export interface userFormProfile{
+  username: string;
+  password: string;
+  firstname: string;
+  lastname: string;
+}
 
 export interface personalityForm{
   personality: PersonalityResult;

@@ -16,7 +16,6 @@
         <td>{{user.username}}</td>
         <td>{{user.firstname}}</td>
         <td>{{user.lastname}}</td>
-        <td><button>Voir</button></td>
         <td><button>Modifier</button></td>
         <td><button *ngIf="!deleteConfirmation && user.id != 1" (click)="askDeleteConfirmation(user.id)">Supprimer</button>
           <button *ngIf="deleteConfirmation  && user.id == idUserToDelete" (click)="delete(user.id)">Confirmer suppression</button>

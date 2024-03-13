@@ -11,18 +11,17 @@
       <li>PRÉNOM : {{activeUser.firstname}}</li>
       <li>NOM : {{activeUser.lastname}}</li>
     </ul>
-    <button>Modifier</button>
   </div>
   <br><br>
   <div>
     <h3>Test des 16 personnalités</h3>
     <div *ngIf="activeUser.personality != null">
       <p>MA PERSONNALITÉ : {{activeUser.personality}}</p>
-      <button>Modifier</button>
+      <button (click)="showUpdatePersonality()">Modifier</button>
     </div>
 
 
-    <div class="personalities_link" *ngIf="activeUser.personality == null">
+    <div class="personalities_link" *ngIf="activeUser.personality == null || showPersonalityForm">
       <h4>Infos et instructions</h4>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
       <br>
@@ -59,11 +58,11 @@
     <h3>Test RIASEC : intérêts professionnels</h3>
     <div *ngIf="activeUser.riasec != null">
       <p>MES INTÉRÊTS PROFESSIONNELS : {{activeUser.riasec[0]}}, {{activeUser.riasec[1]}}, {{activeUser.riasec[2]}}</p>
-      <button>Modifier</button>
+      <button (click)="showUpdateRiasec()">Modifier</button>
     </div>
 
 
-    <div class="riasec_link" *ngIf="activeUser.riasec == null">
+    <div class="riasec_link" *ngIf="activeUser.riasec == null || showRiasecForm">
 
       <h4>Les origines du test</h4>
       <p>Le profil RIASEC est un modèle théorique élaboré par le psychologue et chercheur américain John Holland dans les années 70.

@@ -38,7 +38,7 @@ export class LoginService implements OnInit{
   }
 
   login(auth: authForm){
-    return this._httpClient.post<Auth>(`${this._apiUrl}/user/login`, auth).pipe(
+    return this._httpClient.post<Auth>(`${this._apiUrl}/login`, auth).pipe(
       tap(value => {
         localStorage.setItem('token', value.token);
         localStorage.setItem('role', value.roles.toString());
