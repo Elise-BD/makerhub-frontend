@@ -1,1 +1,27 @@
 <p>group works!</p>
+<div>
+  <h3>LISTE DES GROUPES</h3>
+
+  <table id="liste_groups">
+    <thead>
+    <th>ID</th>
+    <th>NOM DU GROUPE</th>
+    <th>MEMBRES</th>
+    <th colspan="3">ACTIONS</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let group of groupsList">
+      <td>{{group.id}}</td>
+      <td>{{group.name}}</td>
+      <td>{{group.users.length}}</td>
+      <td><button>Rejoindre</button></td>
+      <td><button>Modifier</button></td>
+      <td><button>Supprimer</button>
+    </tr>
+    </tbody>
+
+    <tfoot></tfoot>
+  </table>
+
+
+</div>
