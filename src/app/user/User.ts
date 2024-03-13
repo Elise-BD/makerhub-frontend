@@ -49,7 +49,19 @@ export enum RiasecResult{
 }
 
 
-export interface registerForm{}
+export interface registerForm{
+  username: string;
+  password: string;
+  firstname: string;
+  lastname: string;
+}
+
+export const REGISTER_FORM ={
+  username: ['', [Validators.required, Validators.minLength(3)]],
+  password: ['', [Validators.required, Validators.minLength(8)]],
+  firstname: ['', [Validators.required, Validators.minLength(2)]],
+  lastname: ['', [Validators.required, Validators.minLength(2)]],
+}
 
 export interface userForm{}
 

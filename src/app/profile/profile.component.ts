@@ -75,7 +75,7 @@ export class ProfileComponent {
   updateRiasec(){
     if(this.riasecForm.valid) {
       this._userService.updateRiasec(this.activeUser!.id, this.riasecForm.value).subscribe({
-        next: value => {alert("Personalité mise à jour.");
+        next: value => {alert("Intérêts professionnels mis à jour.");
           this.riasecForm.reset();
           this.ngOnInit()},
         error: err => {

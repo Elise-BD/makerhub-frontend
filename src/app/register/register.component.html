@@ -1,0 +1,14 @@
+
+<h2>CRÉER MON COMPTE</h2>
+
+<form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+  <input type="text" formControlName="username" placeholder="mon pseudo">
+  <br><br>
+  <input type="text" formControlName="password" placeholder="mot de passe (min 8 car.)">
+  <br><br>
+  <input type="text" formControlName="firstname" placeholder="mon prénom">
+  <br><br>
+  <input type="text" formControlName="lastname" placeholder="mon nom">
+  <br><br>
+  <button type="submit" [disabled]="registerForm.invalid">Créer mon compte</button>
+</form>

@@ -13,6 +13,8 @@ export class UserService {
               @Inject('apiUrl') private _apiUrl: string,
               private readonly _router: Router) { }
 
+
+
   getAll(){
     return this._httpClient.get<User[]>(this._apiUrl + "/user/all")
   }
@@ -26,7 +28,11 @@ export class UserService {
   }
 
   register(form: registerForm){
-    return this._httpClient.post(this._apiUrl + "/user/register", form)
+    return this._httpClient.post(this._apiUrl + "/user/register", form).pipe(
+      tap(value => {
+        this._router.navigate(['./login'])
+      })
+    );
   }
 
   updateUserDetails(id: number, form: userForm){
