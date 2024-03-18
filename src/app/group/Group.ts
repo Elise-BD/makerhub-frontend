@@ -1,12 +1,12 @@
-import {User} from "../user/User";
+import {User, UserStats} from "../user/User";
 import {Validators} from "@angular/forms";
 
 export class Group{
   id: number;
   name: string;
-  users: User[];
+  users: UserStats[];
 
-  constructor(id: number, name: string, users: User[]) {
+  constructor(id: number, name: string, users: UserStats[]) {
     this.id = id;
     this.name = name;
     this.users = users;

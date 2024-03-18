@@ -1,0 +1,37 @@
+
+
+<table *ngIf="activeGroup">
+  <thead>
+  <th>UTILISATEUR</th>
+  <th>PERSONNALITÉ</th>
+  <th>Famille</th>
+  <th>Type</th>
+  <th>Attitude E/I</th>
+  <th>Fonctions</th>
+  <th>Attitude J/P</th>
+  <th>RIASEC</th>
+  <th>Intérêt 1</th>
+  <th>Intérêt 2</th>
+  <th>Intérêt 3</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of activeGroup.users">
+    <td>{{user.firstname}} {{user.lastname}}</td>
+    <td>{{user.personality}}</td>
+    <td>{{user.family}}</td>
+    <td>{{user.type}}</td>
+    <td>{{user.firstLetter}}</td>
+    <td>{{user.middleLetters}}</td>
+    <td>{{user.lastLetter}}</td>
+    <td>{{user.riasec[0].toString().substring(0,1) + user.riasec[1].toString().substring(0,1) + user.riasec[2].toString().substring(0,1)}}</td>
+    <td>{{user.riasec[0].toString()}}</td>
+    <td>{{user.riasec[1].toString()}}</td>
+    <td>{{user.riasec[2].toString()}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div style="display: block;">
+  <canvas id="MyChart">{{chart}}
+  </canvas>
+</div>

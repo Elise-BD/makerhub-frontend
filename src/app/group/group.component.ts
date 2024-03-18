@@ -106,7 +106,7 @@ export class GroupComponent implements OnInit, OnDestroy{
   }
 
   getStats(groupId: number){
-
+    this._router.navigate(['./stats/' + groupId]);
   }
 
   delete(groupId: number) {

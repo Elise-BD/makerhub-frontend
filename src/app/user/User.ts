@@ -1,6 +1,8 @@
 import {Validators} from "@angular/forms";
 import {Role} from "../login/Auth";
 import {Group} from "../group/Group";
+import _default from "chart.js/dist/plugins/plugin.tooltip";
+import type = _default.defaults.animations.numbers.type;
 
 export class User{
   id: number;
@@ -11,7 +13,6 @@ export class User{
   riasec: RiasecResult[];
   groups: number[];
 
-
   constructor(id: number, username: string, firstname: string, lastname: string, personality: PersonalityResult, riasec: RiasecResult[], groups: number[]) {
     this.id = id;
     this.username = username;
@@ -20,6 +21,35 @@ export class User{
     this.personality = personality;
     this.riasec = riasec;
     this.groups = groups;
+  }
+}
+
+export class UserStats{
+  id: number;
+  username: string;
+  firstname: string;
+  lastname: string;
+  personality: string;
+  family: string;
+  type: string;
+  firstLetter: string;
+  middleLetters: string;
+  lastLetter: string;
+  riasec: RiasecResult[];
+
+
+  constructor(id: number, username: string, firstname: string, lastname: string, personality: string, family: string, type: string, firstLetter: string, middleLetters: string, lastLetter: string, riasec: RiasecResult[]) {
+    this.id = id;
+    this.username = username;
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.personality = personality;
+    this.family = family;
+    this.type = type;
+    this.firstLetter = firstLetter;
+    this.middleLetters = middleLetters;
+    this.lastLetter = lastLetter;
+    this.riasec = riasec;
   }
 }
 
