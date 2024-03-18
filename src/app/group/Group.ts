@@ -1,4 +1,5 @@
 import {User} from "../user/User";
+import {Validators} from "@angular/forms";
 
 export class Group{
   id: number;
@@ -12,5 +13,12 @@ export class Group{
   }
 
 
+}
 
+export interface groupCreationForm{
+  name: string;
+}
+
+export const GROUP_CREATION={
+  name:['',[Validators.required, Validators.minLength(3)]]
 }

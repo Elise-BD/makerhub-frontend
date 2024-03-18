@@ -16,6 +16,10 @@ import { GroupComponent } from './group/group.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {BaseChartDirective} from "ng2-charts";
+import {BarController} from "chart.js";
+import {MatTabHeader} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -29,14 +33,17 @@ import { RegisterComponent } from './register/register.component';
     GroupComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BaseChartDirective,
+    MatTabHeader
   ],
   providers: [
     {provide: 'apiUrl', useValue: "http://localhost:8080/api"},

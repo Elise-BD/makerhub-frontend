@@ -39,7 +39,6 @@ export class UserComponent implements OnInit, OnDestroy{
       (value) => {
         if (value != null){
           if(value.roles.toString() == 'ADMIN'){
-            console.log('PRINT ROLES : ' +value.roles.toString());
             this.activeUserRole = Role.ADMIN;
           } else if(value.roles.toString() == 'ENCADRANT'){
             this.activeUserRole = Role.ENCADRANT;

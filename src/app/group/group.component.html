@@ -1,7 +1,17 @@
-<p>group works!</p>
+<br><br>
+<div *ngIf="activeRole == 'ADMIN' || activeRole == 'ENCADRANT' ">
+  <h3>CRÉER UN GROUPE</h3>
+  <form [formGroup]="groupCreationForm" (ngSubmit)="createGroup()">
+    <label for="groupName">Nom du nouveau groupe : </label>
+    <input type="text" formControlName="name" id="groupName">
+    <button type="submit" [disabled]="groupCreationForm.invalid">Créer un groupe</button>
+  </form>
+
+  <br><br>
+</div>
+
 <div>
   <h3>LISTE DES GROUPES</h3>
-
   <table id="liste_groups">
     <thead>
     <th>ID</th>
@@ -14,14 +24,20 @@
       <td>{{group.id}}</td>
       <td>{{group.name}}</td>
       <td>{{group.users.length}}</td>
-      <td><button>Rejoindre</button></td>
-      <td><button>Modifier</button></td>
-      <td><button>Supprimer</button>
+      <td><button *ngIf="activeRole == 'ENCADRANT' "
+                  (click)="getStats(group.id)">Analyse</button></td>
+      <td><button *ngIf="(activeRole == 'UTILISATEUR' || activeRole == 'ENCADRANT') && !activeUserGroups.includes(group.id)"
+                  (click)="joinGroup(group)">Rejoindre</button>
+          <button *ngIf="(activeRole == 'UTILISATEUR' || activeRole == 'ENCADRANT') && activeUserGroups.includes(group.id)"
+                  (click)="leaveGroup(group)">Quitter</button></td>
+      <td><button *ngIf="activeRole == 'ADMIN' || activeRole == 'ENCADRANT' " [disabled]="true">Modifier</button></td>
+      <td><button *ngIf="activeRole == 'ADMIN' || activeRole == 'ENCADRANT' "
+                  (click)="delete(group.id)">Supprimer</button>
     </tr>
     </tbody>
 
     <tfoot></tfoot>
   </table>
 
-
 </div>
+<br><br>

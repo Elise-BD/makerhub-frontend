@@ -1,5 +1,6 @@
 import {Validators} from "@angular/forms";
 import {Role} from "../login/Auth";
+import {Group} from "../group/Group";
 
 export class User{
   id: number;
@@ -8,15 +9,17 @@ export class User{
   lastname: string;
   personality: PersonalityResult;
   riasec: RiasecResult[];
+  groups: number[];
 
 
-  constructor(id: number, username: string, firstname: string, lastname: string, personality: PersonalityResult, riasec: RiasecResult[]) {
+  constructor(id: number, username: string, firstname: string, lastname: string, personality: PersonalityResult, riasec: RiasecResult[], groups: number[]) {
     this.id = id;
     this.username = username;
     this.firstname = firstname;
     this.lastname = lastname;
     this.personality = personality;
     this.riasec = riasec;
+    this.groups = groups;
   }
 }
 
