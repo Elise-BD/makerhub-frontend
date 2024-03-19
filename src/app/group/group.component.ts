@@ -88,8 +88,7 @@ export class GroupComponent implements OnInit, OnDestroy{
       this._groupService.activeUserJoinsGroup(group.id).pipe(
         takeUntil(this.$destroyed)).subscribe({
         next: () => this.ngOnInit(),
-        error: (err) => console.log(err.error),
-        complete: () => alert("Vous avez rejoit le groupe ID " +group.id)
+        error: (err) => console.log(err.error)
       })
     }
   }
@@ -99,8 +98,7 @@ export class GroupComponent implements OnInit, OnDestroy{
       this._groupService.activeUserLeavesGroup(group.id).pipe(
         takeUntil(this.$destroyed)).subscribe({
         next: () => this.ngOnInit(),
-        error: (err) => console.log(err.error),
-        complete: () => alert("Vous avez quitté le groupe ID " +group.id)
+        error: (err) => console.log(err.error)
       })
     }
   }

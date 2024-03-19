@@ -4,6 +4,8 @@ import {Group} from "../group/Group";
 import _default from "chart.js/dist/plugins/plugin.tooltip";
 import type = _default.defaults.animations.numbers.type;
 
+// ADMIN USER LIST
+
 export class User{
   id: number;
   username: string;
@@ -23,6 +25,8 @@ export class User{
     this.groups = groups;
   }
 }
+
+// ENCADRANT ANALYSIS PAGE
 
 export class UserStats{
   id: number;
@@ -53,6 +57,30 @@ export class UserStats{
   }
 }
 
+// ANONYMOUS STATS DASHBOARD
+
+export class UserStatsShort{
+  personality: string;
+  family: string;
+  type: string;
+  firstLetter: string;
+  middleLetters: string;
+  lastLetter: string;
+  riasec: RiasecResult[];
+
+  constructor(personality: string, family: string, type: string, firstLetter: string, middleLetters: string, lastLetter: string, riasec: RiasecResult[]) {
+    this.personality = personality;
+    this.family = family;
+    this.type = type;
+    this.firstLetter = firstLetter;
+    this.middleLetters = middleLetters;
+    this.lastLetter = lastLetter;
+    this.riasec = riasec;
+  }
+}
+
+// ENUMS
+
 export enum PersonalityResult{
   INTJ ="INTJ",
   INTP ="INTP",
@@ -82,6 +110,8 @@ export enum RiasecResult{
   CONVENTIONNEL ="C"
 }
 
+
+// FORMS AND VALIDATORS
 
 export interface registerForm{
   username: string;

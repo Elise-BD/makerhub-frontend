@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {personalityForm, registerForm, riasecForm, User, userFormAdmin, userFormProfile} from "./User";
+import {personalityForm, registerForm, riasecForm, User, userFormAdmin, userFormProfile, UserStats} from "./User";
 import {Router} from "@angular/router";
 import {tap} from "rxjs";
 
@@ -17,6 +17,10 @@ export class UserService {
 
   getAll(){
     return this._httpClient.get<User[]>(this._apiUrl + "/user/all")
+  }
+
+  getAllUserStats(){
+    return this._httpClient.get<UserStats[]>(this._apiUrl + "/user/stats/all")
   }
 
   getById(id: number){

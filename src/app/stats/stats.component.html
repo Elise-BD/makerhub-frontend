@@ -1,48 +1,52 @@
-
-<table *ngIf="activeGroup">
-  <thead>
-  <th COLSPAN="2">UTILISATEUR</th>
-  <th>PERSONNALITÉ</th>
-  <th>Famille</th>
-  <th>Type</th>
-  <th>Attitude E/I</th>
-  <th>Fonctions</th>
-  <th>Attitude J/P</th>
-  <th>RIASEC</th>
-  <th>Intérêt 1</th>
-  <th>Intérêt 2</th>
-  <th>Intérêt 3</th>
-  </thead>
-  <tbody>
-  <tr *ngFor="let user of activeGroup.users">
-    <td>{{user.firstname}}</td>
-    <td *ngIf="user.lastname != null">{{user.lastname}}</td>
-    <td *ngIf="user.lastname == null"></td>
-    <td *ngIf="user.personality != null">{{user.personality}}</td>
-    <td *ngIf="user.personality == null"></td>
-    <td *ngIf="user.personality != null">{{user.family}}</td>
-    <td *ngIf="user.personality == null"></td>
-    <td *ngIf="user.personality != null">{{user.type}}</td>
-    <td *ngIf="user.personality == null"></td>
-    <td *ngIf="user.personality != null">{{user.firstLetter}}</td>
-    <td *ngIf="user.personality == null"></td>
-    <td *ngIf="user.personality != null">{{user.middleLetters}}</td>
-    <td *ngIf="user.personality == null"></td>
-    <td *ngIf="user.personality != null">{{user.lastLetter}}</td>
-    <td *ngIf="user.personality == null"></td>
-    <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString().substring(0,1) + user.riasec[1].toString().substring(0,1) + user.riasec[2].toString().substring(0,1)}}</td>
-    <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString()}}</td>
-    <td *ngIf="user.riasec.length != 0">{{user.riasec[1].toString()}}</td>
-    <td *ngIf="user.riasec.length != 0">{{user.riasec[2].toString()}}</td>
-  </tr>
-  </tbody>
-</table>
+<div *ngIf="activeGroup">
+  <h3>STATISTIQUES DU GROUPE "{{activeGroup.name.toUpperCase()}}"</h3>
+  <br>
+  <table>
+    <thead>
+    <th COLSPAN="2">UTILISATEUR</th>
+    <th>PERSONNALITÉ</th>
+    <th>Famille</th>
+    <th>Type</th>
+    <th>Attitude E/I</th>
+    <th>Fonctions</th>
+    <th>Attitude J/P</th>
+    <th>RIASEC</th>
+    <th>Intérêt 1</th>
+    <th>Intérêt 2</th>
+    <th>Intérêt 3</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of activeGroup.users">
+      <td>{{user.firstname}}</td>
+      <td *ngIf="user.lastname != null">{{user.lastname}}</td>
+      <td *ngIf="user.lastname == null"></td>
+      <td *ngIf="user.personality != null">{{user.personality}}</td>
+      <td *ngIf="user.personality == null"></td>
+      <td *ngIf="user.personality != null">{{user.family}}</td>
+      <td *ngIf="user.personality == null"></td>
+      <td *ngIf="user.personality != null">{{user.type}}</td>
+      <td *ngIf="user.personality == null"></td>
+      <td *ngIf="user.personality != null">{{user.firstLetter}}</td>
+      <td *ngIf="user.personality == null"></td>
+      <td *ngIf="user.personality != null">{{user.middleLetters}}</td>
+      <td *ngIf="user.personality == null"></td>
+      <td *ngIf="user.personality != null">{{user.lastLetter}}</td>
+      <td *ngIf="user.personality == null"></td>
+      <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString().substring(0,1) + user.riasec[1].toString().substring(0,1) + user.riasec[2].toString().substring(0,1)}}</td>
+      <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString()}}</td>
+      <td *ngIf="user.riasec.length != 0">{{user.riasec[1].toString()}}</td>
+      <td *ngIf="user.riasec.length != 0">{{user.riasec[2].toString()}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 <br><br>
 
 <div class="chart-container" style="display: block;">
   <canvas id="familiesChart">{{chart1}}
   </canvas>
 </div>
+<br>
 
 <div class="chart-container" style="display: block;">
   <canvas id="extraversionChart">{{chart2}}
