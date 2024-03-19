@@ -2,7 +2,7 @@
 
 <table *ngIf="activeGroup">
   <thead>
-  <th>UTILISATEUR</th>
+  <th COLSPAN="2">UTILISATEUR</th>
   <th>PERSONNALITÉ</th>
   <th>Famille</th>
   <th>Type</th>
@@ -16,17 +16,25 @@
   </thead>
   <tbody>
   <tr *ngFor="let user of activeGroup.users">
-    <td>{{user.firstname}} {{user.lastname}}</td>
-    <td>{{user.personality}}</td>
-    <td>{{user.family}}</td>
-    <td>{{user.type}}</td>
-    <td>{{user.firstLetter}}</td>
-    <td>{{user.middleLetters}}</td>
-    <td>{{user.lastLetter}}</td>
-    <td>{{user.riasec[0].toString().substring(0,1) + user.riasec[1].toString().substring(0,1) + user.riasec[2].toString().substring(0,1)}}</td>
-    <td>{{user.riasec[0].toString()}}</td>
-    <td>{{user.riasec[1].toString()}}</td>
-    <td>{{user.riasec[2].toString()}}</td>
+    <td>{{user.firstname}}</td>
+    <td *ngIf="user.lastname != null">{{user.lastname}}</td>
+    <td *ngIf="user.lastname == null"></td>
+    <td *ngIf="user.personality != null">{{user.personality}}</td>
+    <td *ngIf="user.personality == null"></td>
+    <td *ngIf="user.personality != null">{{user.family}}</td>
+    <td *ngIf="user.personality == null"></td>
+    <td *ngIf="user.personality != null">{{user.type}}</td>
+    <td *ngIf="user.personality == null"></td>
+    <td *ngIf="user.personality != null">{{user.firstLetter}}</td>
+    <td *ngIf="user.personality == null"></td>
+    <td *ngIf="user.personality != null">{{user.middleLetters}}</td>
+    <td *ngIf="user.personality == null"></td>
+    <td *ngIf="user.personality != null">{{user.lastLetter}}</td>
+    <td *ngIf="user.personality == null"></td>
+    <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString().substring(0,1) + user.riasec[1].toString().substring(0,1) + user.riasec[2].toString().substring(0,1)}}</td>
+    <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString()}}</td>
+    <td *ngIf="user.riasec.length != 0">{{user.riasec[1].toString()}}</td>
+    <td *ngIf="user.riasec.length != 0">{{user.riasec[2].toString()}}</td>
   </tr>
   </tbody>
 </table>

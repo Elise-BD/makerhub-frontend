@@ -17,27 +17,37 @@ export class StatsComponent implements OnInit, OnDestroy{
               private _activatedRoute: ActivatedRoute){}
 
   createChart(){
+    let analystes: number = 0;
+    let diplomates: number = 0;
+    let sentinelles: number = 0;
+    let explorateurs: number = 0;
+
+    if(this.activeGroup != null){
+      analystes = this.activeGroup.users.filter(u => u.family == 'ANALYSTES').length;
+      diplomates = this.activeGroup.users.filter(u => u.family == 'DIPLOMATES').length;
+      sentinelles = this.activeGroup.users.filter(u => u.family == 'SENTINELLES').length;
+      explorateurs = this.activeGroup.users.filter(u => u.family == 'EXPLORATEURS').length;
+    }
+
+    console.log(analystes, diplomates, sentinelles, explorateurs)
+    console.log(this.activeGroup)
 
     this.chart = new Chart("MyChart", {
-      type: 'bar', //type of chart
+      type: 'pie', // type of chart
 
       data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-          '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ],
-        datasets: [
-          {
-            label: "Sales",
-            data: ['467','576', '572', '79', '92',
-              '574', '573', '576'],
-            backgroundColor: 'blue'
-          },
-          {
-            label: "Profit",
-            data: ['542', '542', '536', '327', '17',
-              '0.00', '538', '541'],
-            backgroundColor: 'limegreen'
-          }
-        ]
+        labels: ['Analystes', 'Diplomates','Sentinelles','Explorateurs'],
+        datasets: [{
+          label: 'Répartition par familles',
+          data: [analystes, diplomates, sentinelles, explorateurs],
+          backgroundColor: [
+            'rgb(131, 99, 150)',
+            'rgb(81, 162, 120)',
+            'rgb(84, 151, 177)',
+            'rgb(222, 174, 81)'
+          ],
+          hoverOffset: 8
+        }],
       },
       options: {
         aspectRatio:2.5
@@ -46,6 +56,7 @@ export class StatsComponent implements OnInit, OnDestroy{
     });
   }
 
+
   ngOnInit(){
 
     let groupId = this._activatedRoute.snapshot.params['id'];
@@ -53,13 +64,13 @@ export class StatsComponent implements OnInit, OnDestroy{
       this._groupService.getById(groupId).subscribe(
         {
           next: (value) => {
-            this.activeGroup = value;},
+            this.activeGroup = value;
+            this.createChart();},
           error: (err) => console.log(err.error),
         }
       )
     }
 
-    this.createChart();
   }
 
   ngOnDestroy() {

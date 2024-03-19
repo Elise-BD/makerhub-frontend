@@ -20,7 +20,7 @@ export class GroupService {
 
   //USED FOR STATISTICS
   getById(id: number){
-    return this._httpClient.get<Group>(this._apiUrl + "/group/stats/" + id);
+    return this._httpClient.get<Group>(this._apiUrl + "/group/" + id);
   }
 
   create(form: groupCreationForm){
