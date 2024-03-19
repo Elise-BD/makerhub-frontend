@@ -11,16 +11,19 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class StatsComponent implements OnInit, OnDestroy{
   activeGroup!: Group;
-  chart: any;
+  chart1: any;
+  chart2: any;
 
   constructor(private readonly _groupService: GroupService,
               private _activatedRoute: ActivatedRoute){}
 
-  createChart(){
+  createCharts(){
     let analystes: number = 0;
     let diplomates: number = 0;
     let sentinelles: number = 0;
     let explorateurs: number = 0;
+    let extravertis: number = 0;
+    let introvertis: number = 0;
 
     if(this.activeGroup != null){
       analystes = this.activeGroup.users.filter(u => u.family == 'ANALYSTES').length;
@@ -29,10 +32,7 @@ export class StatsComponent implements OnInit, OnDestroy{
       explorateurs = this.activeGroup.users.filter(u => u.family == 'EXPLORATEURS').length;
     }
 
-    console.log(analystes, diplomates, sentinelles, explorateurs)
-    console.log(this.activeGroup)
-
-    this.chart = new Chart("MyChart", {
+    this.chart1 = new Chart("familiesChart", {
       type: 'pie', // type of chart
 
       data: {// values on X-Axis
@@ -46,14 +46,43 @@ export class StatsComponent implements OnInit, OnDestroy{
             'rgb(84, 151, 177)',
             'rgb(222, 174, 81)'
           ],
-          hoverOffset: 8
+          hoverOffset: 50,
+          borderAlign: 'inner'
         }],
       },
       options: {
-        aspectRatio:2.5
+        aspectRatio:3
       }
 
     });
+
+    if(this.activeGroup != null){
+      introvertis = this.activeGroup.users.filter(u => u.firstLetter == 'I').length;
+      extravertis = this.activeGroup.users.filter(u => u.firstLetter == 'E').length;
+    }
+
+    this.chart2 = new Chart("extraversionChart", {
+      type: 'pie', // type of chart
+
+      data: {// values on X-Axis
+        labels: ['Introvertis', 'Extravertis'],
+        datasets: [{
+          label: 'Répartition par attitude E/I',
+          data: [introvertis, extravertis],
+          backgroundColor: [
+            'rgb(50, 132, 152)',
+            'rgb(244, 160, 65)'
+          ],
+          hoverOffset: 30,
+          borderAlign: 'inner'
+        }],
+      },
+      options: {
+        aspectRatio:3
+      }
+
+    });
+
   }
 
 
@@ -65,7 +94,7 @@ export class StatsComponent implements OnInit, OnDestroy{
         {
           next: (value) => {
             this.activeGroup = value;
-            this.createChart();},
+            this.createCharts();},
           error: (err) => console.log(err.error),
         }
       )

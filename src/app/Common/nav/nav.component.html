@@ -1,10 +1,11 @@
 <nav>
   <ul>
     <li><a routerLink="/home">HOME</a></li>
+    <li *ngIf="(activeUser | async)"><a routerLink="/dashboard">STATISTIQUES</a></li>
     <li *ngIf="!(activeUser | async)"><a routerLink="/register">CRÉER UN COMPTE</a></li>
     <li *ngIf="(activeUser | async)"><a routerLink="/group">GROUPES</a></li>
     <li *ngIf="(activeUser | async) == 'admin' "><a routerLink="/user">UTILISATEURS</a></li>
-    <li *ngIf="(activeUser | async) == 'utilisateur' "><a routerLink="/profile">MON PROFIL</a></li>
+    <li *ngIf="(activeUser | async) == 'utilisateur' ||(activeUser | async) == 'encadrant' "><a routerLink="/profile">MON PROFIL</a></li>
     <li><a routerLink="/login" *ngIf="!(activeUser | async)" >CONNEXION</a>
       <a routerLink="/login" *ngIf="(activeUser | async)" (click)="disconnect()">DECONNEXION</a></li>
   </ul>

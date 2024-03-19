@@ -21,6 +21,7 @@ import {BaseChartDirective} from "ng2-charts";
 import {BarController} from "chart.js";
 import {MatTabHeader} from "@angular/material/tabs";
 import {MatTable} from "@angular/material/table";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatTable} from "@angular/material/table";
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    StatsComponent
+    StatsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import {GroupComponent} from "./group/group.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {RegisterComponent} from "./register/register.component";
 import {StatsComponent} from "./stats/stats.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'stats/:id', component: StatsComponent},
+  {path: 'dashboard', component: DashboardComponent},
   {path: '404', component: Page404Component},
   {path: '**', redirectTo: '404'}
 ];
