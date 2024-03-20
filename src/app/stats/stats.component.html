@@ -9,7 +9,7 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. NF" #input>
     </mat-form-field>
 
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table mat-table [dataSource]="dataSource" matSort class="table table-bordered table-condensed table-hover table-striped">
       <ng-container matColumnDef="firstname">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>UTILISATEUR</th>
         <td mat-cell *matCellDef="let user">{{user.firstname}} {{user.lastname}}</td>
@@ -85,7 +85,7 @@
   <br><br>
 
 
-  <table>
+  <table >
     <thead>
     <th COLSPAN="2">UTILISATEUR</th>
     <th>PERSONNALITÉ</th>
@@ -125,14 +125,28 @@
   </table>
 </div>
 <br><br>
-
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Distribution Familles</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
 <div class="chart-container" style="display: block;">
   <canvas id="familiesChart">{{chart1}}
   </canvas>
 </div>
-<br>
+  </mat-card-content>
+</mat-card>
+  <br>
 
-<div class="chart-container" style="display: block;">
-  <canvas id="extraversionChart">{{chart2}}
-  </canvas>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Distribution Personalités</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="chart-container" style="display: block;">
+      <canvas id="extraversionChart">{{chart2}}
+      </canvas>
+    </div>
+  </mat-card-content>
+</mat-card>
+

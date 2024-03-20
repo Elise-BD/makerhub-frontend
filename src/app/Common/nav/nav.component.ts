@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {map} from "rxjs";
 import {LoginService} from "../../login/login.service";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-nav',

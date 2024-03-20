@@ -1,14 +1,35 @@
-
-<h2>CRÉER MON COMPTE</h2>
-
+<div class="container">
 <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
-  <input type="text" formControlName="username" placeholder="mon pseudo">
-  <br><br>
-  <input type="text" formControlName="password" placeholder="mot de passe (min 8 car.)">
-  <br><br>
-  <input type="text" formControlName="firstname" placeholder="mon prénom">
-  <br><br>
-  <input type="text" formControlName="lastname" placeholder="mon nom">
-  <br><br>
-  <button type="submit" [disabled]="registerForm.invalid">Créer mon compte</button>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>CRÉER MON COMPTE</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" formControlName="username" placeholder="mon pseudo">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" formControlName="password" placeholder="mot de passe (min 8 car.)">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" formControlName="firstname" placeholder="mon prénom">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" formControlName="lastname" placeholder="mon nom">
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Créer mon compte
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </form>
+</div>

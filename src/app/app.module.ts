@@ -35,6 +35,11 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatButtonModule} from "@angular/material/button";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIcon} from "@angular/material/icon";
+import {MatMenu, MatMenuModule} from "@angular/material/menu";
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -52,20 +57,31 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     StatsComponent,
     DashboardComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        BaseChartDirective,
-        MatFormFieldModule,
-        MatInputModule,
-        MatTableModule,
-        MatSortModule,
-        MatPaginatorModule,
-        BrowserAnimationsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BaseChartDirective,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIcon,
+    BrowserAnimationsModule,
+    MatMenu,
+    MatCard,
+    MatCardContent,
+    MatCardHeader,
+    MatCardActions,
+    MatCardModule
+  ],
   providers: [
     {provide: 'apiUrl', useValue: "http://localhost:8080/api"},
     {provide: HTTP_INTERCEPTORS, useClass: authenticationInterceptor, multi: true}
