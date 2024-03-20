@@ -1,6 +1,90 @@
 <div *ngIf="activeGroup">
+  <br>
   <h3>STATISTIQUES DU GROUPE "{{activeGroup.name.toUpperCase()}}"</h3>
   <br>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Filtre de recherche</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. NF" #input>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>UTILISATEUR</th>
+        <td mat-cell *matCellDef="let user">{{user.firstname}} {{user.lastname}}</td>
+      </ng-container>
+
+     <!--  <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef>Utilisateur</th>
+        <td mat-cell *matCellDef="let user">{{user.lastname}}</td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="personality">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>PERSONNALITÉ</th>
+        <td mat-cell *matCellDef="let user">{{user.personality}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="family">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Famille</th>
+        <td mat-cell *matCellDef="let user">{{user.family}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+        <td mat-cell *matCellDef="let user">{{user.type}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="firstletter">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Attitude E/I</th>
+        <td mat-cell *matCellDef="let user">{{user.firstLetter}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="middleletters">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fonctions</th>
+        <td mat-cell *matCellDef="let user">{{user.middleLetters}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastletter">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Attitude J/P</th>
+        <td mat-cell *matCellDef="let user">{{user.lastLetter}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="riasec" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>RIASEC</th>
+        <td mat-cell *matCellDef="let user">{{user.riasec[0].toString().substring(0,1) + user.riasec[1].toString().substring(0,1) + user.riasec[2].toString().substring(0,1)}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="riasec1">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Intérêt 1</th>
+        <td mat-cell *matCellDef="let user">{{user.riasec[0]}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="riasec2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Intérêt 2</th>
+        <td mat-cell *matCellDef="let user">{{user.riasec[1]}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="riasec3">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Intérêt 3</th>
+        <td mat-cell *matCellDef="let user">{{user.riasec[2]}}</td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+  <br><br>
+
+
   <table>
     <thead>
     <th COLSPAN="2">UTILISATEUR</th>

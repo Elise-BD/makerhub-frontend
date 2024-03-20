@@ -1,21 +1,43 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Chart} from "chart.js/auto";
 import {Group} from "../group/Group";
 import {GroupService} from "../group/group.service";
 import {ActivatedRoute} from "@angular/router";
+import {MatSort} from "@angular/material/sort";
+import {MatPaginator, MatPaginatorIntl} from "@angular/material/paginator";
+import {UserStats} from "../user/User";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
   styleUrl: './stats.component.css'
 })
-export class StatsComponent implements OnInit, OnDestroy{
+export class StatsComponent implements OnInit, OnDestroy, AfterViewInit{
   activeGroup!: Group;
+  dataSource!: MatTableDataSource<UserStats>;
+  displayedColumns: string[] = ['firstname', 'personality', 'family', 'type', 'firstletter', 'middleletters', 'lastletter', 'riasec', 'riasec1', 'riasec2', 'riasec3'];
   chart1: any;
   chart2: any;
+  @ViewChild(MatPaginator) set paginator(paginator: MatPaginator){this.dataSource.paginator = paginator};
+  @ViewChild(MatSort) set matSort(sort: MatSort){this.dataSource.sort = sort};
 
   constructor(private readonly _groupService: GroupService,
-              private _activatedRoute: ActivatedRoute){}
+              private _activatedRoute: ActivatedRoute){
+
+  }
+
+  ngAfterViewInit() {
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
   createCharts(){
     let analystes: number = 0;
@@ -93,8 +115,10 @@ export class StatsComponent implements OnInit, OnDestroy{
       this._groupService.getById(groupId).subscribe(
         {
           next: (value) => {
+            console.log(value);
             this.activeGroup = value;
-            this.createCharts();},
+            this.createCharts();
+            this.dataSource = new MatTableDataSource(this.activeGroup.users);},
           error: (err) => console.log(err.error),
         }
       )
