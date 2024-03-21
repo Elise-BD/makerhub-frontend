@@ -36,7 +36,7 @@
       <td>{{group.name}}</td>
       <td>{{group.users.length}}</td>
       <td *ngIf="activeRole == 'ENCADRANT' ">
-        <button (click)="getStats(group.id)"><mat-icon fontIcon="pie_chart"></mat-icon>Analyse</button></td>
+        <button mat-stroked-button color="primary" (click)="getStats(group.id)"><mat-icon fontIcon="pie_chart"></mat-icon>Analyse</button></td>
       <td *ngIf="(activeRole == 'UTILISATEUR' || activeRole == 'ENCADRANT')">
         <button mat-stroked-button color="primary" *ngIf="(activeRole == 'UTILISATEUR' || activeRole == 'ENCADRANT') && !activeUserGroups.includes(group.id)"
                   (click)="joinGroup(group)">Rejoindre</button>

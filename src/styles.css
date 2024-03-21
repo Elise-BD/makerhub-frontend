@@ -26,7 +26,20 @@ h1, h2, h3, h4, h5{
   font-family: "Fira Code Medium", "Helvetica Neue", sans-serif;
 }
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
+
+.img-404 {
+  width: 100%;
+  height: auto;
+}
+
+.img-logo {
+  width: 30%;
+  min-width: 300px;
+  height: auto;
+}
 
 /* TABLE RELATED */
 table {
