@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   padding-bottom: 4rem;
@@ -165,7 +170,15 @@ table {
   }
 }
 
-.welcome{
+.profil-data {
+  width: 25%;
+}
+
+.purple {
+  color: #6c41b5;
+}
+
+.welcome {
   font-style: italic;
   font-size: large;
   color: #6c41b5;
