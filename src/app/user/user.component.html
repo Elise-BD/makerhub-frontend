@@ -1,3 +1,4 @@
+<body>
 <div class="container">
 <div *ngIf="activeUserRole == Role.ADMIN ">
   <h3>LISTE DES UTILISATEURS</h3>
@@ -16,8 +17,8 @@
         <td>{{user.username}}</td>
         <td>{{user.firstname}}</td>
         <td>{{user.lastname}}</td>
-        <td><button mat-stroked-button color="primary">Modifier</button></td>
-        <td><button mat-stroked-button color="warn" *ngIf="!deleteConfirmation && user.id != 1" (click)="askDeleteConfirmation(user.id)">Supprimer</button>
+        <td><button mat-stroked-button color="primary"><mat-icon>edit</mat-icon></button></td>
+        <td><button mat-stroked-button color="warn" *ngIf="!deleteConfirmation && user.id != 1" (click)="askDeleteConfirmation(user.id)"><mat-icon>delete</mat-icon></button>
           <button mat-raised-button color="warn" *ngIf="deleteConfirmation  && user.id == idUserToDelete" (click)="delete(user.id)">Confirmer suppression</button>
           <button mat-raised-button color="accent" *ngIf="deleteConfirmation  && user.id == idUserToDelete" (click)="cancelDelete(user.id)">Annuler suppression</button></td>
       </tr>
@@ -25,8 +26,8 @@
 
     <tfoot></tfoot>
   </table>
-
-
+  <br>
 </div>
-
+  <br>
 </div>
+</body>

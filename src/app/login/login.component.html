@@ -1,11 +1,27 @@
-<div class="form">
+<div class="container">
   <form [formGroup]="loginForm" (ngSubmit)="connection()">
-    <label for="username">Identifiant</label><br>
-    <input type="text" formControlName="username" id="username"><br>
-    <br>
-    <label for="password">Mot de passe</label><br>
-    <input type="password" formControlName="password" id="password"><br>
-    <br>
-    <button type="submit">Se connecter</button>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>SE CONNECTER</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" formControlName="username" placeholder="Identifiant">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <input matInput type="password" formControlName="password" placeholder="Mot de passe">
+          </mat-form-field>
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+      </mat-card-actions>
+    </mat-card>
   </form>
 </div>

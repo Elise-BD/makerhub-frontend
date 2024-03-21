@@ -1,43 +1,55 @@
-<br><br>
-<div *ngIf="activeRole == 'ADMIN' || activeRole == 'ENCADRANT' ">
-  <h3>CRÉER UN GROUPE</h3>
+<body>
+<div class="container" *ngIf="activeRole == 'ADMIN' || activeRole == 'ENCADRANT' ">
   <form [formGroup]="groupCreationForm" (ngSubmit)="createGroup()">
-    <label for="groupName">Nom du nouveau groupe : </label>
-    <input type="text" formControlName="name" id="groupName">
-    <button type="submit" [disabled]="groupCreationForm.invalid">Créer un groupe</button>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>CRÉER UN GROUPE</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>
+          <mat-form-field appearance="outline">
+            <input matInput type="text" formControlName="name" placeholder="Nom du nouveau groupe">
+          </mat-form-field>
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="groupCreationForm.invalid">Créer le groupe</button>
+      </mat-card-actions>
+    </mat-card>
   </form>
-
-  <br><br>
 </div>
-
-<div>
+<br>
+<div class="container">
   <h3>LISTE DES GROUPES</h3>
-  <table id="liste_groups">
+  <table class="table table-bordered table-condensed table-hover table-striped" id="liste_groups">
     <thead>
     <th>ID</th>
     <th>NOM DU GROUPE</th>
     <th>MEMBRES</th>
-    <th colspan="3">ACTIONS</th>
+    <th *ngIf="activeRole">ACTIONS</th>
     </thead>
     <tbody>
     <tr *ngFor="let group of groupsList">
       <td>{{group.id}}</td>
       <td>{{group.name}}</td>
       <td>{{group.users.length}}</td>
-      <td><button *ngIf="activeRole == 'ENCADRANT' "
-                  (click)="getStats(group.id)">Analyse</button></td>
-      <td><button *ngIf="(activeRole == 'UTILISATEUR' || activeRole == 'ENCADRANT') && !activeUserGroups.includes(group.id)"
+      <td *ngIf="activeRole == 'ENCADRANT' ">
+        <button (click)="getStats(group.id)"><mat-icon fontIcon="pie_chart"></mat-icon>Analyse</button></td>
+      <td *ngIf="(activeRole == 'UTILISATEUR' || activeRole == 'ENCADRANT')">
+        <button mat-stroked-button color="primary" *ngIf="(activeRole == 'UTILISATEUR' || activeRole == 'ENCADRANT') && !activeUserGroups.includes(group.id)"
                   (click)="joinGroup(group)">Rejoindre</button>
-          <button *ngIf="(activeRole == 'UTILISATEUR' || activeRole == 'ENCADRANT') && activeUserGroups.includes(group.id)"
+          <button mat-stroked-button color="primary" *ngIf="(activeRole == 'UTILISATEUR' || activeRole == 'ENCADRANT') && activeUserGroups.includes(group.id)"
                   (click)="leaveGroup(group)">Quitter</button></td>
-      <td><button *ngIf="activeRole == 'ADMIN' || activeRole == 'ENCADRANT' " [disabled]="true">Modifier</button></td>
-      <td><button *ngIf="activeRole == 'ADMIN' || activeRole == 'ENCADRANT' "
-                  (click)="delete(group.id)">Supprimer</button>
+      <td *ngIf="activeRole == 'ADMIN' || activeRole == 'ENCADRANT' ">
+        <button mat-stroked-button color="primary"><mat-icon>edit</mat-icon></button></td>
+      <td *ngIf="activeRole == 'ADMIN' || activeRole == 'ENCADRANT' ">
+        <button mat-stroked-button color="warn" (click)="delete(group.id)"><mat-icon>delete</mat-icon></button></td>
     </tr>
     </tbody>
-
-    <tfoot></tfoot>
   </table>
 
 </div>
 <br><br>
+</body>
