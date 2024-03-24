@@ -1,152 +1,179 @@
-<div *ngIf="activeGroup">
-  <br>
-  <h3>STATISTIQUES DU GROUPE "{{activeGroup.name.toUpperCase()}}"</h3>
-  <br>
+<div class="bottom-margin">
+  <div class="container" *ngIf="activeGroup">
+    <br>
+    <h3>STATISTIQUES DU GROUPE "{{activeGroup.name.toUpperCase()}}"</h3>
+    <br>
 
-  <div>
-    <mat-form-field>
-      <mat-label>Filtre de recherche</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. NF" #input>
-    </mat-form-field>
+    <div>
+      <mat-form-field>
+        <mat-label>Filtre de recherche</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. social" #input>
+      </mat-form-field>
 
-    <table mat-table [dataSource]="dataSource" matSort class="table table-bordered table-condensed table-hover table-striped">
-      <ng-container matColumnDef="firstname">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>UTILISATEUR</th>
-        <td mat-cell *matCellDef="let user">{{user.firstname}} {{user.lastname}}</td>
-      </ng-container>
+      <table mat-table [dataSource]="dataSource" matSort
+             class="table table-bordered table-condensed table-hover table-striped">
+        <ng-container matColumnDef="firstname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>UTILISATEUR</th>
+          <td mat-cell *matCellDef="let user">{{user.firstname}} {{user.lastname}}</td>
+        </ng-container>
 
-     <!--  <ng-container matColumnDef="lastname">
-        <th mat-header-cell *matHeaderCellDef>Utilisateur</th>
-        <td mat-cell *matCellDef="let user">{{user.lastname}}</td>
-      </ng-container> -->
+        <ng-container matColumnDef="personality">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>PERSONNALITÉ</th>
+          <td mat-cell *matCellDef="let user">
+            <div *ngIf="user.personality != null">{{user.personality}}</div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="personality">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>PERSONNALITÉ</th>
-        <td mat-cell *matCellDef="let user">{{user.personality}}</td>
-      </ng-container>
+        <ng-container matColumnDef="family">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Famille</th>
+          <td mat-cell *matCellDef="let user">
+            <div *ngIf="user.personality != null">{{user.family}}</div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="family">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Famille</th>
-        <td mat-cell *matCellDef="let user">{{user.family}}</td>
-      </ng-container>
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+          <td mat-cell *matCellDef="let user">
+            <div *ngIf="user.personality != null">{{user.type}}</div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-        <td mat-cell *matCellDef="let user">{{user.type}}</td>
-      </ng-container>
+        <ng-container matColumnDef="firstletter">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Attitude E/I</th>
+          <td mat-cell *matCellDef="let user">
+            <div *ngIf="user.personality != null">{{user.firstLetter}}</div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="firstletter">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Attitude E/I</th>
-        <td mat-cell *matCellDef="let user">{{user.firstLetter}}</td>
-      </ng-container>
+        <ng-container matColumnDef="middleletters">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Fonctions</th>
+          <td mat-cell *matCellDef="let user">
+            <div *ngIf="user.personality != null">{{user.middleLetters}}</div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="middleletters">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fonctions</th>
-        <td mat-cell *matCellDef="let user">{{user.middleLetters}}</td>
-      </ng-container>
+        <ng-container matColumnDef="lastletter">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Attitude J/P</th>
+          <td mat-cell *matCellDef="let user">
+            <div *ngIf="user.personality != null">{{user.lastLetter}}</div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="lastletter">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Attitude J/P</th>
-        <td mat-cell *matCellDef="let user">{{user.lastLetter}}</td>
-      </ng-container>
+        <ng-container matColumnDef="riasec">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>RIASEC</th>
+          <td mat-cell *matCellDef="let user">
+            <div
+              *ngIf="user.riasec.length > 0">{{user.riasec[0].toString().substring(0, 1) + user.riasec[1].toString().substring(0, 1) + user.riasec[2].toString().substring(0, 1)}}</div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="riasec" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>RIASEC</th>
-        <td mat-cell *matCellDef="let user">{{user.riasec[0].toString().substring(0,1) + user.riasec[1].toString().substring(0,1) + user.riasec[2].toString().substring(0,1)}}</td>
-      </ng-container>
+        <ng-container matColumnDef="riasec1">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Intérêt 1</th>
+          <td mat-cell *matCellDef="let user">
+            <div *ngIf="user.riasec.length > 0">{{user.riasec[0]}}</div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="riasec1">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Intérêt 1</th>
-        <td mat-cell *matCellDef="let user">{{user.riasec[0]}}</td>
-      </ng-container>
+        <ng-container matColumnDef="riasec2">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Intérêt 2</th>
+          <td mat-cell *matCellDef="let user">
+            <div *ngIf="user.riasec.length > 0">{{user.riasec[1]}}</div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="riasec2">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Intérêt 2</th>
-        <td mat-cell *matCellDef="let user">{{user.riasec[1]}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="riasec3">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Intérêt 3</th>
-        <td mat-cell *matCellDef="let user">{{user.riasec[2]}}</td>
-      </ng-container>
+        <ng-container matColumnDef="riasec3">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Intérêt 3</th>
+          <td mat-cell *matCellDef="let user">
+            <div *ngIf="user.riasec.length > 0">{{user.riasec[2]}}</div>
+          </td>
+        </ng-container>
 
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+
+
+    <!--
+    <table >
+      <thead>
+      <th COLSPAN="2">UTILISATEUR</th>
+      <th>PERSONNALITÉ</th>
+      <th>Famille</th>
+      <th>Type</th>
+      <th>Attitude E/I</th>
+      <th>Fonctions</th>
+      <th>Attitude J/P</th>
+      <th>RIASEC</th>
+      <th>Intérêt 1</th>
+      <th>Intérêt 2</th>
+      <th>Intérêt 3</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of activeGroup.users">
+        <td>{{user.firstname}}</td>
+        <td *ngIf="user.lastname != null">{{user.lastname}}</td>
+        <td *ngIf="user.lastname == null"></td>
+        <td *ngIf="user.personality != null">{{user.personality}}</td>
+        <td *ngIf="user.personality == null"></td>
+        <td *ngIf="user.personality != null">{{user.family}}</td>
+        <td *ngIf="user.personality == null"></td>
+        <td *ngIf="user.personality != null">{{user.type}}</td>
+        <td *ngIf="user.personality == null"></td>
+        <td *ngIf="user.personality != null">{{user.firstLetter}}</td>
+        <td *ngIf="user.personality == null"></td>
+        <td *ngIf="user.personality != null">{{user.middleLetters}}</td>
+        <td *ngIf="user.personality == null"></td>
+        <td *ngIf="user.personality != null">{{user.lastLetter}}</td>
+        <td *ngIf="user.personality == null"></td>
+        <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString().substring(0,1) + user.riasec[1].toString().substring(0,1) + user.riasec[2].toString().substring(0,1)}}</td>
+        <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString()}}</td>
+        <td *ngIf="user.riasec.length != 0">{{user.riasec[1].toString()}}</td>
+        <td *ngIf="user.riasec.length != 0">{{user.riasec[2].toString()}}</td>
       </tr>
-    </table>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 20, 100]" aria-label="Select page of users"></mat-paginator>
+      </tbody>
+    </table> -->
   </div>
+
   <br><br>
 
+  <div class="container box">
 
-  <table >
-    <thead>
-    <th COLSPAN="2">UTILISATEUR</th>
-    <th>PERSONNALITÉ</th>
-    <th>Famille</th>
-    <th>Type</th>
-    <th>Attitude E/I</th>
-    <th>Fonctions</th>
-    <th>Attitude J/P</th>
-    <th>RIASEC</th>
-    <th>Intérêt 1</th>
-    <th>Intérêt 2</th>
-    <th>Intérêt 3</th>
-    </thead>
-    <tbody>
-    <tr *ngFor="let user of activeGroup.users">
-      <td>{{user.firstname}}</td>
-      <td *ngIf="user.lastname != null">{{user.lastname}}</td>
-      <td *ngIf="user.lastname == null"></td>
-      <td *ngIf="user.personality != null">{{user.personality}}</td>
-      <td *ngIf="user.personality == null"></td>
-      <td *ngIf="user.personality != null">{{user.family}}</td>
-      <td *ngIf="user.personality == null"></td>
-      <td *ngIf="user.personality != null">{{user.type}}</td>
-      <td *ngIf="user.personality == null"></td>
-      <td *ngIf="user.personality != null">{{user.firstLetter}}</td>
-      <td *ngIf="user.personality == null"></td>
-      <td *ngIf="user.personality != null">{{user.middleLetters}}</td>
-      <td *ngIf="user.personality == null"></td>
-      <td *ngIf="user.personality != null">{{user.lastLetter}}</td>
-      <td *ngIf="user.personality == null"></td>
-      <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString().substring(0,1) + user.riasec[1].toString().substring(0,1) + user.riasec[2].toString().substring(0,1)}}</td>
-      <td *ngIf="user.riasec.length != 0">{{user.riasec[0].toString()}}</td>
-      <td *ngIf="user.riasec.length != 0">{{user.riasec[1].toString()}}</td>
-      <td *ngIf="user.riasec.length != 0">{{user.riasec[2].toString()}}</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-<br><br>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Distribution Familles</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-<div class="chart-container" style="display: block;">
-  <canvas id="familiesChart">{{chart1}}
-  </canvas>
-</div>
-  </mat-card-content>
-</mat-card>
-  <br>
-
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Distribution Personalités</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="chart-container" style="display: block;">
-      <canvas id="extraversionChart">{{chart2}}
-      </canvas>
+    <div class="chart-object">
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>Personnalité : distribution par famille</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container" style="display: block;">
+            <canvas id="familiesChart">{{chart1}}
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
-  </mat-card-content>
-</mat-card>
 
+    <div class="chart-object">
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>Personnalité : distribution introversion/extraversion</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container" style="display: block;">
+            <canvas id="extraversionChart">{{chart2}}
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+</div>

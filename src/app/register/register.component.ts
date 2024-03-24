@@ -22,7 +22,7 @@ export class RegisterComponent {
   registerUser(){
     if(this.registerForm.valid){
       this._userService.register(this.registerForm.value).subscribe({
-        next: () => {alert("Nouvel utilisateur créé.")},
+        next: () => {alert("Création de compte validée.")},
         error: err => {
           if(err.status === 403){
             alert("Problème d'authentification.")

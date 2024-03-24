@@ -68,12 +68,12 @@ export class StatsComponent implements OnInit, OnDestroy, AfterViewInit{
             'rgb(84, 151, 177)',
             'rgb(222, 174, 81)'
           ],
-          hoverOffset: 50,
+          hoverOffset: 40,
           borderAlign: 'inner'
         }],
       },
       options: {
-        aspectRatio:3
+        aspectRatio:2
       }
 
     });
@@ -100,7 +100,7 @@ export class StatsComponent implements OnInit, OnDestroy, AfterViewInit{
         }],
       },
       options: {
-        aspectRatio:3
+        aspectRatio:2
       }
 
     });

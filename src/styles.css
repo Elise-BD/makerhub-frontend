@@ -1,14 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
 
-a {
+.a-teal {
+  color: #01859a;
+}
+
+.a-white {
   color: white;
   text-decoration: none;
 }
 
 body {
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.bottom-margin {
+  margin: 0;
   padding-bottom: 4rem;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.box {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.box mat-card {
+  margin-bottom: 1rem;
+}
+
+.chart-card {
+  width: 47.5vw;
+  min-width: 550px;
+  min-height: 400px;
+}
+
+.chart-container {
+  width: 100%;
+}
+
+.chart-object {
+  width: fit-content;
+  height: auto;
+  justify-content: center;
 }
 
 .container {
@@ -28,7 +65,7 @@ footer{
 }
 
 h1, h2, h3, h4, h5{
-  font-family: "Fira Code Medium", "Helvetica Neue", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 html, body {
@@ -44,6 +81,10 @@ html, body {
   width: 30%;
   min-width: 300px;
   height: auto;
+}
+
+.chart-object .mat-mdc-card-header {
+  justify-content: center;
 }
 
 /* TABLE RELATED */
@@ -170,8 +211,17 @@ table {
   }
 }
 
+p {
+  text-align: justify;
+}
+
 .profil-data {
   width: 25%;
+}
+
+.profile-object {
+  width: 47.5vw;
+  height: auto;
 }
 
 .purple {

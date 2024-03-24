@@ -26,8 +26,8 @@ export class ProfileComponent {
   $destroyed = new Subject<boolean>();
   personalityForm: FormGroup;
   riasecForm: FormGroup
-  showPersonalityForm: boolean = true;
-  showRiasecForm: boolean = true;
+  showPersonalityForm: boolean = false;
+  showRiasecForm: boolean = false;
 
 
   constructor(private readonly _userService: UserService,
@@ -59,7 +59,7 @@ export class ProfileComponent {
   updatePersonality(){
     if(this.personalityForm.valid) {
       this._userService.updatePersonality(this.activeUser!.id, this.personalityForm.value).subscribe({
-        next: value => {alert("Personalité mise à jour.");
+        next: value => {
           this.personalityForm.reset();
           this.ngOnInit()},
         error: err => {
@@ -79,7 +79,7 @@ export class ProfileComponent {
   updateRiasec(){
     if(this.riasecForm.valid) {
       this._userService.updateRiasec(this.activeUser!.id, this.riasecForm.value).subscribe({
-        next: value => {alert("Intérêts professionnels mis à jour.");
+        next: value => {
           this.riasecForm.reset();
           this.ngOnInit()},
         error: err => {
