@@ -54,7 +54,7 @@ export class DashboardComponent {
         }],
       },
       options: {
-        aspectRatio:3
+        aspectRatio:2
       }
 
     });
@@ -81,7 +81,7 @@ export class DashboardComponent {
         }],
       },
       options: {
-        aspectRatio:3
+        aspectRatio:2
       }
 
     });

@@ -1,12 +1,38 @@
 <br>
-<h3>STATISTIQUES GLOBALES (ANONYMES)</h3>
-<br>
-<div class="chart-container" style="display: block;">
-  <canvas id="familiesChart">{{chart1}}
-  </canvas>
-</div>
+<div class="container bottom-margin">
+  <h3>STATISTIQUES GLOBALES (ANONYMES)</h3>
+  <h4 class="purple">Nombre total d'utilisateurs : {{allUsersList.length}}</h4>
+  <br>
 
-<div class="chart-container" style="display: block;">
-  <canvas id="extraversionChart">{{chart2}}
-  </canvas>
+  <div class="box bottom-margin">
+
+    <div class="chart-object">
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>Personnalité : distribution par famille</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container" style="display: block;">
+            <canvas id="familiesChart">{{chart1}}
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="chart-object">
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>Personnalité : distribution par famille</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container" style="display: block;">
+            <canvas id="extraversionChart">{{chart2}}
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
 </div>
